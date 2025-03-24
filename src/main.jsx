@@ -12,6 +12,7 @@ import Home from './components/Pages/Home/Home.jsx';
 import Login from './components/Pages/Login/Login.jsx';
 import Register from './components/Pages/Register/Register.jsx';
 import { ToastContainer } from 'react-toastify';
+import AddTutorials from './components/Pages/AddTutorials/AddTutorials.jsx';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path:'/register',
         element:<Register></Register>
+      },
+      {
+        path:'/addTutorials',
+        element:<AddTutorials></AddTutorials>
       }
     ]
   },

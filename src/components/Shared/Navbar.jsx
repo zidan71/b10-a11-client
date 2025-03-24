@@ -5,7 +5,7 @@ import { AuthContext } from '../Context/AuthProvider';
 const links = <>
 <li><NavLink to={'/'}>Home</NavLink></li>
 <li><NavLink to={'/'}>Find tutors</NavLink></li>
-<li><NavLink to={'/'}>Add Tutorials</NavLink></li>
+<li><NavLink to={'/addTutorials'}>Add Tutorials</NavLink></li>
 <li><NavLink to={'/'}>My Tutorials</NavLink></li>
 <li><NavLink to={'/'}>My booked tutors</NavLink></li>
 </>
