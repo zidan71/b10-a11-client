@@ -6,7 +6,7 @@ const links = <>
 <li><NavLink to={'/'}>Home</NavLink></li>
 <li><NavLink to={'/'}>Find tutors</NavLink></li>
 <li><NavLink to={'/addTutorials'}>Add Tutorials</NavLink></li>
-<li><NavLink to={'/'}>My Tutorials</NavLink></li>
+<li><NavLink to={'/myTutorials'}>My Tutorials</NavLink></li>
 <li><NavLink to={'/'}>My booked tutors</NavLink></li>
 </>
 

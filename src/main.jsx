@@ -13,6 +13,7 @@ import Login from './components/Pages/Login/Login.jsx';
 import Register from './components/Pages/Register/Register.jsx';
 import { ToastContainer } from 'react-toastify';
 import AddTutorials from './components/Pages/AddTutorials/AddTutorials.jsx';
+import MyTutorials from './components/Pages/MyTutorials/MyTutorials.jsx';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,12 @@ const router = createBrowserRouter([
       {
         path:'/addTutorials',
         element:<AddTutorials></AddTutorials>
+      },
+      {
+        path:'/myTutorials',
+        element:<MyTutorials></MyTutorials>,
+        loader: () => fetch('http://localhost:5000/tutors') 
+        
       }
     ]
   },
