@@ -1,11 +1,13 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/AuthProvider';
+import { toast } from 'react-toastify';
 
 const Login = () => {
 
 
     const {login} =  useContext(AuthContext)
+    const navigate = useNavigate()
 
     const handleClick = e => {
         e.preventDefault()
@@ -16,9 +18,12 @@ const Login = () => {
         login(email,password)
         .then(result => {
             console.log(result.user)
+            toast.success('Login Successful')
+            navigate('')
         })
         .catch(err => {
             console.log("ERRR",err.message)
+            toast.error('Wrong Credentials')
         })
     }
 

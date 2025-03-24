@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { AuthContext } from '../Context/AuthProvider';
 
 const links = <>
 <li><NavLink to={'/'}>Home</NavLink></li>
@@ -10,6 +11,9 @@ const links = <>
 </>
 
 const Navbar = () => {
+
+      const {users,logOut} = useContext(AuthContext)
+
     return (
         <div className="navbar bg-base-100 ">
         <div className="navbar-start">
@@ -23,7 +27,7 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">daisyUI</a>
+          <a className="btn btn-ghost text-xl">TutorHive</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
@@ -31,7 +35,18 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <Link to={'/login'} className="btn btn-error">Login</Link>
+
+          {
+            users && users?.email ? <div className='flex'>
+              <img
+               className='w-10 object-cover mr-2 rounded-2xl cursor-pointer'
+                src={users?.photoURL} 
+                title={users?.displayName}
+                />
+              <button onClick={logOut} className="btn btn-warning">log-out</button>
+            </div> :  <Link to={'/login'} className="btn btn-error">Login</Link>
+          }
+
         </div>
       </div>
     );

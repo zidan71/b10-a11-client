@@ -1,9 +1,16 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../Context/AuthProvider';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { auth } from '../../../firebase.cofig';
+import { FaGoogle } from "react-icons/fa";
+
 
 const Register = () => {
 
-    const {register} = useContext(AuthContext)
+    const {register,updateUser} = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const handleClick = e => {
         e.preventDefault()
@@ -18,12 +25,33 @@ const Register = () => {
         register(email,password)
         .then(result => {
             console.log(result.user)
+            updateUser({displayName : name,photoURL:photo})
+            .then(()=> {
+                navigate('/')
+            })
+            .catch(err => {
+                toast.error('error happend')
+            })
+
         })
         .catch(err => {
             console.log('erro',err.message)
         })
 
 
+    }
+
+    const google =new GoogleAuthProvider()
+
+    const handleGoogle = () => {
+        signInWithPopup(auth,google)
+        .then(result => {
+            toast.success('Successfully Registered')
+            navigate('/')
+        })
+        .catch(()=> {
+            toast.error('Credentials not Okay!')
+        })
     }
 
     return (
@@ -46,6 +74,11 @@ const Register = () => {
                 <input type="password" name='password' className="input" placeholder="Password" />
                 
                 <button className="btn btn-neutral mt-4">Register</button>
+
+                <div className='text-center my-2'>
+                    <p>Or</p>
+                    <button  onClick={handleGoogle} className="btn w-full mt-1.5"> <FaGoogle /> Google</button>
+                </div>
               </form>
             </div>
           </div>
