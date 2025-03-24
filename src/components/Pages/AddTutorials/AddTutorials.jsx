@@ -1,12 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../Context/AuthProvider";
 
 const AddTutorials = () => {
+
+
+    const {users} = useContext(AuthContext)
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent page reload
+    const form = e.target
+   const name = form.name.value;
+   const email = form. email.value;
+   const language = form.language.value;
+   const price = form.price.value;
+   const description = form.description.value;
+   const review = form.review.value;
+   const image = form.image.value;
 
-    const formData = new FormData(e.target); // Extract form data
-    const tutorialData = Object.fromEntries(formData.entries()); // Convert FormData to object
+   const tutorialData = {name,image,email,language,price,description,review}
 
     tutorialData.review = "0";
 
@@ -30,15 +41,16 @@ const AddTutorials = () => {
     <div className="min-h-screen bg-base-200 flex items-center justify-center">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold text-center mb-6 text-black">Add a New Tutorial</h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4 text-white">
           {/* Name */}
           <div>
             <label className="block font-medium text-black">Your Name</label>
             <input
               type="text"
               name="name"
+              defaultValue={users?.displayName}
               placeholder="Enter your name"
-              className="input input-bordered w-full text-black placeholder-gray-500"
+              className="input input-bordered w-full text-white placeholder-gray-500"
               required
             />
           </div>
@@ -49,18 +61,19 @@ const AddTutorials = () => {
             <input
               type="email"
               name="email"
+              defaultValue={users?.email}
               placeholder="Enter your email"
-              className="input input-bordered w-full text-black placeholder-gray-500"
+              className="input input-bordered w-full text-white placeholder-gray-500"
               required
             />
           </div>
 
-          {/* Tutorial Image */}
           <div>
             <label className="block font-medium text-black">Upload Tutorial Image</label>
             <input
               type="text"
               name="image"
+              defaultValue={users?.photoURL}
               placeholder=" image url"
               className="file-input  file-input-bordered w-full text-white"
               required
@@ -74,7 +87,7 @@ const AddTutorials = () => {
               type="text"
               name="language"
               placeholder="Enter tutorial language (e.g., English, Spanish)"
-              className="input input-bordered w-full text-black placeholder-gray-500"
+              className="input input-bordered w-full text-white placeholder-gray-500"
               required
             />
           </div>
@@ -86,7 +99,7 @@ const AddTutorials = () => {
               type="number"
               name="price"
               placeholder="Enter price in USD"
-              className="input input-bordered w-full text-black placeholder-gray-500"
+              className="input input-bordered w-full text-white placeholder-gray-500"
               required
             />
           </div>
@@ -97,7 +110,7 @@ const AddTutorials = () => {
             <textarea
               name="description"
               placeholder="Enter a brief description of the tutorial"
-              className="textarea textarea-bordered w-full text-black placeholder-gray-500"
+              className="textarea textarea-bordered w-full text-white placeholder-gray-500"
               required
             ></textarea>
           </div>

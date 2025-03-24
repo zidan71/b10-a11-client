@@ -1,9 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const MyTutorials = () => {
 
-    const tutors = useLoaderData()
+    const allTutors = useLoaderData()
+
+    const [tutors,setTutors] = useState(allTutors);
+
+
+
+
+    const handleDelete = (id) =>  {
+        console.log(id)
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",  
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/tutors/${id}`, { method: "DELETE" })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    Swal.fire("Deleted!", "Your equipment has been deleted.", "success");
+                    setTutors(tutors.filter(e => e._id !== id));
+
+                });
+            }
+        });
+           
+    }
+    
 
     return (
         <div>
@@ -15,40 +48,51 @@ const MyTutorials = () => {
                     <thead>
                         <tr>
                             <th></th>
-                            <th>Name</th>
-                            <th>Job</th>
-                            <th>Favorite Color</th>
+
+                            <th>Price</th>
+                            <th>Language</th>
+                            <th>Description</th>
+                            <th>Review</th>
                         </tr>
                     </thead>
                     <tbody>
-
+            
                         {
                             tutors.map((tutor) => (
-                                <tr className="hover:bg-gray-50  transition duration-200">
+                                
+                                <tr className=" text-white">
                                     <td className="px-6 py-4">
                                         <div className="flex items-center gap-4">
-                                            <div className="flex-shrink-0">
+                                            <div className="">
                                                 <img
-                                                    src={tutor.photo}
-                                                    alt={tutor.photo}
-                                                    
+                                                    src={tutor.image}
                                                     className="h-12 w-12 rounded-full object-cover"
                                                 />
+                                                
                                             </div>
                                             <div>
-                                                <div className="font-semibold text-gray-900">{tutor.name}</div>
-                                                <div className="text-sm text-gray-500">{tutor.email}</div>
+                                                <div className="font-semibold text-white ">{tutor.name}</div>
+                                                <div className="text-sm text-white">{tutor.email}</div>
                                             </div>
                                         </div>
                                     </td>
-                                    <td className="px-6 py-4 text-gray-900">${tutor.price}</td>
-                                    <td className="px-6 py-4 text-gray-900">{tutor.language}</td>
-                                    <td className="px-6 py-4">
-                                        <Link to=''>
+                                    <td className="px-6 text-white py-4 ">${tutor.price}</td>
+                                    <td className="px-6 text-white py-4 ">{tutor.language}</td>
+                                    <td className="px-6 text-white py-4 ">{tutor.description}</td>
+                                    <td className="px-6 text-white py-4 ">{tutor.review}</td>
+                                    <td className="px-6 text-white py-4 flex gap-4">
+                                        <Link to={`/update/${tutor._id}`}>
                                             <button className="bg-gradient-to-r cursor-pointer from-teal-500 to-cyan-500 text-white px-4 py-2 rounded-md hover:from-cyan-500 hover:to-teal-500 transition duration-300">
-                                                View Details
+                                                Update
                                             </button>
                                         </Link>
+
+                                        <button onClick={() => handleDelete(tutor._id)} className="bg-gradient-to-r cursor-pointer from-red-500 to-orange-500 text-white px-4 py-2 rounded-md hover:from-orange-500 hover:to-red-500 transition duration-300">
+                                         
+
+                                            Delete
+                                        </button>
+
                                     </td>
                                 </tr>
                             ))
