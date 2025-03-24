@@ -13,7 +13,7 @@ const firebaseConfig = {
   storageBucket: "tutor-7393c.firebasestorage.app",
   messagingSenderId: "173260584285",
   appId: "1:173260584285:web:8702a23269de05dd0824b4"
-};
+};  
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
