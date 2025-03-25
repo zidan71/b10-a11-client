@@ -13,6 +13,9 @@ const AddTutorials = () => {
     const form = e.target
    const name = form.name.value;
    const email = form. email.value;
+
+   language.toUpperCase()
+
    const language = form.language.value;
    const price = form.price.value;
    const description = form.description.value;
