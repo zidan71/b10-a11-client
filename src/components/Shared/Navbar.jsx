@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../Context/AuthProvider';
+import { toast } from 'react-toastify';
 
 const links = <>
 <li><NavLink to={'/'}>Home</NavLink></li>
-<li><NavLink to={'/'}>Find tutors</NavLink></li>
+<li><NavLink to={'/findTutors'}>Find tutors</NavLink></li>
 <li><NavLink to={'/addTutorials'}>Add Tutorials</NavLink></li>
 <li><NavLink to={'/myTutorials'}>My Tutorials</NavLink></li>
-<li><NavLink to={'/'}>My booked tutors</NavLink></li>
+<li><NavLink to={'/myBookedTutors'}>My booked tutors</NavLink></li>
 </>
 
 const Navbar = () => {
@@ -43,7 +44,11 @@ const Navbar = () => {
                 src={users?.photoURL} 
                 title={users?.displayName}
                 />
-              <button onClick={logOut} className="btn btn-warning">log-out</button>
+              <button onClick={()=> {
+                toast.success('successfully logged out')
+                logOut()
+
+                }} className="btn btn-warning">log-out</button>
             </div> :  <Link to={'/login'} className="btn btn-error">Login</Link>
           }
 

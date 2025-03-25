@@ -147,7 +147,7 @@ const Update = () => {
             />
 
                     {/* Submit Button */}
-                    <button type="submit" className="btn btn-primary w-full">Submit Tutorial</button>
+                    <button type="submit" className="btn btn-primary w-full">Update</button>
                 </form>
             </div>
         </div>
