@@ -1,10 +1,47 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { FaStar, FaChalkboardTeacher, FaDollarSign, FaGlobe } from 'react-icons/fa';
+import { AuthContext } from '../../Context/AuthProvider';
+import { toast } from 'react-toastify';
 
 const TutorDetails = () => {
     const tutor = useLoaderData();
-    const { name, image, language, description, price, review } = tutor;
+    const { users } = useContext(AuthContext)
+    const { name, image, language, description, price, review, _id, email:tutorEmail  } = tutor;
+
+    const tutorId = _id;
+    const email = users?.email;
+
+
+    
+    const handleClick = () => {
+
+        const bookTutor = {
+            tutorId,
+            image,
+            language,
+            price,
+            tutorEmail,
+            email
+            
+        }
+
+
+        fetch(`http://localhost:5000/bookTutors`, {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(bookTutor)})
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                toast.success('SuccessFully Booked')
+            })
+
+    }
+
+    
 
     return (
         <div className="max-w-4xl mx-auto my-12 bg-white shadow-lg rounded-xl overflow-hidden flex flex-col md:flex-row">
@@ -34,7 +71,7 @@ const TutorDetails = () => {
                 </div>
 
                 {/* Book Now Button */}
-                <button className="mt-6 w-full cursor-pointer bg-blue-500 text-white py-3 rounded-md text-lg font-semibold hover:bg-blue-600 transition duration-300">
+                <button onClick={handleClick} className="mt-6 w-full cursor-pointer bg-blue-500 text-white py-3 rounded-md text-lg font-semibold hover:bg-blue-600 transition duration-300">
                     Book Now
                 </button>
             </div>
