@@ -18,6 +18,7 @@ import Update from './components/Pages/Update/Update.jsx';
 import PrivateRoute from './components/Private/PrivateRoute.jsx';
 import FindTutor from './components/Pages/FindTutor/FindTutor.jsx';
 import TutorDetails from './components/Pages/TutorDetails/TutorDetails.jsx';
+import MyBookedTutor from './components/Pages/MyBookedTutor/MyBookedTutor.jsx';
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,15 @@ const router = createBrowserRouter([
         path:'/findTutors',
         element:<FindTutor></FindTutor>,
         loader: () => fetch(`http://localhost:5000/tutors`)       
+
+      },
+      {
+        path:'/myBookedTutors',
+        element:<PrivateRoute>
+          <MyBookedTutor></MyBookedTutor>
+        </PrivateRoute>,
+        loader: () => fetch('http://localhost:5000/bookTutors')
+        
 
       },
       {

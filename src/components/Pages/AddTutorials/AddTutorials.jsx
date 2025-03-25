@@ -16,7 +16,8 @@ const AddTutorials = () => {
    const language = form.language.value;
    const price = form.price.value;
    const description = form.description.value;
-   const review = form.review.value;
+   const intReview = form.review.value;
+   const review = parseInt(intReview)
    const image = form.image.value;
 
    const tutorialData = {name,image,email,language,price,description,review}
@@ -37,7 +38,7 @@ const AddTutorials = () => {
     .then(data => {
          console.log(data)
          if(data.insertedId){
-            Swal.fire("Deleted!", "Your equipment has been deleted.", "success");
+            Swal.fire("Added", "Your Information Added Successfully", "success");
             navigate('/myTutorials')
          }
     })
@@ -131,7 +132,7 @@ const AddTutorials = () => {
               placeholder="Enter the rating"
               className="input input-bordered w-full text-white placeholder-gray-500"
               required
-              defaultValue={0}
+              value={0}
             />
           {/* Submit Button */}
           <button type="submit" className="btn btn-primary w-full">Submit Tutorial</button>

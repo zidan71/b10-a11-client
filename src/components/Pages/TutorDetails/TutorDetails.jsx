@@ -37,7 +37,7 @@ const TutorDetails = () => {
             .then(data => {
                 console.log(data)
                 toast.success('SuccessFully Booked')
-            })
+            })  
 
     }
 
