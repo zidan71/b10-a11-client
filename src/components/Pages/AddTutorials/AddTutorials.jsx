@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const AddTutorials = () => {
 
-
+    const navigate = useNavigate()
     const {users} = useContext(AuthContext)
   // Handle form submission
   const handleSubmit = (e) => {
@@ -19,7 +21,6 @@ const AddTutorials = () => {
 
    const tutorialData = {name,image,email,language,price,description,review}
 
-    tutorialData.review = "0";
 
     console.log("Submitted Tutorial Data:", tutorialData);
 
@@ -33,7 +34,13 @@ const AddTutorials = () => {
 
     })
     .then(res => res.json())
-    .then(data => console.log(data))
+    .then(data => {
+         console.log(data)
+         if(data.insertedId){
+            Swal.fire("Deleted!", "Your equipment has been deleted.", "success");
+            navigate('/myTutorials')
+         }
+    })
 
 };
 
@@ -116,8 +123,16 @@ const AddTutorials = () => {
           </div>
 
           {/* Review (Hidden - Default: 0) */}
-          <input type="hidden" name="review" value="0" />
+          <label className="block font-medium text-black">Rating</label>
 
+          <input
+              type="number"
+              name="review"
+              placeholder="Enter the rating"
+              className="input input-bordered w-full text-white placeholder-gray-500"
+              required
+              defaultValue={0}
+            />
           {/* Submit Button */}
           <button type="submit" className="btn btn-primary w-full">Submit Tutorial</button>
         </form>

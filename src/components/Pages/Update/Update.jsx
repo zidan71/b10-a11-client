@@ -9,7 +9,7 @@ const Update = () => {
 
     const update = useLoaderData()
 
-    const {_id} = update;
+    const {_id,review} = update;
     console.log(_id)
 
     const navigate = useNavigate()
@@ -135,7 +135,16 @@ const Update = () => {
                     </div>
 
                     {/* Review (Hidden - Default: 0) */}
-                    <input type="hidden" name="review" value="0" />
+                    <label className="block font-medium text-black">Rating</label>
+
+          <input
+              type="number"
+              name="review"
+              placeholder="Enter the rating"
+              className="input input-bordered w-full text-white placeholder-gray-500"
+              required
+              value={review}
+            />
 
                     {/* Submit Button */}
                     <button type="submit" className="btn btn-primary w-full">Submit Tutorial</button>

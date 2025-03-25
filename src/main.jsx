@@ -15,6 +15,7 @@ import { ToastContainer } from 'react-toastify';
 import AddTutorials from './components/Pages/AddTutorials/AddTutorials.jsx';
 import MyTutorials from './components/Pages/MyTutorials/MyTutorials.jsx';
 import Update from './components/Pages/Update/Update.jsx';
+import PrivateRoute from './components/Private/PrivateRoute.jsx';
 
 const router = createBrowserRouter([
   {
@@ -36,7 +37,9 @@ const router = createBrowserRouter([
       },
       {
         path:'/addTutorials',
-        element:<AddTutorials></AddTutorials>
+        element:<PrivateRoute>
+          <AddTutorials></AddTutorials>
+        </PrivateRoute>
       },
       {
         path:'/update/:id',
@@ -46,7 +49,9 @@ const router = createBrowserRouter([
       },
       {
         path:'/myTutorials',
-        element:<MyTutorials></MyTutorials>,
+        element:<PrivateRoute>
+          <MyTutorials></MyTutorials>
+        </PrivateRoute>,
         loader: () => fetch(`http://localhost:5000/tutors`) 
         
       }
