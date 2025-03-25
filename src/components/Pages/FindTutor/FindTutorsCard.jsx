@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const FindTutorsCard = ({ tutor }) => {
-  const { name, image, language, review, description } = tutor;
+  const { name, image, language, review, description, _id } = tutor;
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -37,9 +38,13 @@ const FindTutorsCard = ({ tutor }) => {
 
       {/* View Details Button (Always Clickable) */}
       <div className="p-4 ">
-        <button className="w-full cursor-pointer bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">
+          
+          <Link to={`/tutorDetails/${_id}`}>
+          <button className="w-full cursor-pointer bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">
           View Details
         </button>
+        </Link>
+
       </div>
     </div>
   );

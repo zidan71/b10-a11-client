@@ -17,6 +17,7 @@ import MyTutorials from './components/Pages/MyTutorials/MyTutorials.jsx';
 import Update from './components/Pages/Update/Update.jsx';
 import PrivateRoute from './components/Private/PrivateRoute.jsx';
 import FindTutor from './components/Pages/FindTutor/FindTutor.jsx';
+import TutorDetails from './components/Pages/TutorDetails/TutorDetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -49,9 +50,18 @@ const router = createBrowserRouter([
 
       },
       {
-        path:'findTutors',
+        path:'/findTutors',
         element:<FindTutor></FindTutor>,
         loader: () => fetch(`http://localhost:5000/tutors`)       
+
+      },
+      {
+        path:'/tutorDetails/:id',
+        element:<PrivateRoute>
+          <TutorDetails></TutorDetails>
+        </PrivateRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/tutors/${params.id}`)
+       
 
       },
       {
