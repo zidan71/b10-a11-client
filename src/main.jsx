@@ -20,6 +20,7 @@ import FindTutor from './components/Pages/FindTutor/FindTutor.jsx';
 import TutorDetails from './components/Pages/TutorDetails/TutorDetails.jsx';
 import MyBookedTutor from './components/Pages/MyBookedTutor/MyBookedTutor.jsx';
 import TutorsCategory from './components/Pages/TutorsCategory/TutorsCategory.jsx';
+import axios from 'axios';
 
 const router = createBrowserRouter([
   {
@@ -54,11 +55,15 @@ const router = createBrowserRouter([
       {
         path:'/findTutors',
         element:<FindTutor></FindTutor>,
-        loader: () => fetch(`http://localhost:5000/tutors`)       
+        loader: ({ request }) => {
+          const url = new URL(request.url);
+          const search = url.searchParams.get("search") || "";
+          return axios.get(`http://localhost:5000/tutors?search=${search}`,{withCredentials:true});
+        }   
 
       },
       {
-        path:'/findTutors/:category',
+        path:'/findTutors/category/:category',
         element:<TutorsCategory></TutorsCategory>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/tutors/category/${params.category}`)
@@ -69,7 +74,6 @@ const router = createBrowserRouter([
         element:<PrivateRoute>
           <MyBookedTutor></MyBookedTutor>
         </PrivateRoute>,
-        loader: () => fetch('http://localhost:5000/bookTutors')
         
 
       },
@@ -87,7 +91,6 @@ const router = createBrowserRouter([
         element:<PrivateRoute>
           <MyTutorials></MyTutorials>
         </PrivateRoute>,
-        loader: () => fetch(`http://localhost:5000/tutors`) 
         
       }
     ]

@@ -1,13 +1,15 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const MyTutorials = () => {
 
-    const allTutors = useLoaderData()
 
-    const [tutors,setTutors] = useState(allTutors);
+    const [tutors,setTutors] = useState([]);
 
+    axios.get('http://localhost:5000/tutors',{withCredentials:true})
+    .then(res => setTutors(res.data))
 
 
 

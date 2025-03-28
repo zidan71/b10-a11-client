@@ -3,6 +3,7 @@ import { useLoaderData } from 'react-router-dom';
 import { FaStar, FaChalkboardTeacher, FaDollarSign, FaGlobe } from 'react-icons/fa';
 import { AuthContext } from '../../Context/AuthProvider';
 import { toast } from 'react-toastify';
+import axios from 'axios';
 
 const TutorDetails = () => {
     const tutor = useLoaderData();
@@ -27,17 +28,15 @@ const TutorDetails = () => {
         }
 
 
-        fetch(`http://localhost:5000/bookTutors`, {
-            method: "POST",
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(bookTutor)})
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                toast.success('SuccessFully Booked')
-            })  
+            axios.post(`http://localhost:5000/bookTutors`,bookTutor,{withCredentials:true})
+            .then(res => {
+                toast.success('Successfully Added')    
+                console.log(res.data)
+            })
+            .catch(()=> {
+                toast.error('Your Token is Not Valid!')
+            })
+            
 
     }
 

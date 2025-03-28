@@ -24,7 +24,7 @@ const LanguagesSection = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {languages.map((language) => (
           <Link
-            to={`/findTutors/${language.name}`}
+            to={`/findTutors/category/${language.name}`}
             key={language.id}
             className="bg-white shadow-lg rounded-lg p-6 flex items-center justify-between transition-transform duration-300 hover:scale-105 hover:shadow-xl"
           >

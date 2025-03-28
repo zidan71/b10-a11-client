@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const AddTutorials = () => {
 
@@ -14,8 +16,7 @@ const AddTutorials = () => {
    const name = form.name.value;
    const email = form. email.value;
 
-   language.toUpperCase()
-
+ 
    const language = form.language.value;
    const price = form.price.value;
    const description = form.description.value;
@@ -28,23 +29,18 @@ const AddTutorials = () => {
 
     console.log("Submitted Tutorial Data:", tutorialData);
 
-
-    fetch('http://localhost:5000/tutors',{
-        method:'POST',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body:JSON.stringify(tutorialData)
-
+    axios.post('http://localhost:5000/tutors',tutorialData,{withCredentials:true})
+    .then(res => {
+      console.log(res.data)
+      if(res.data.insertedId){
+        Swal.fire("Added", "Your Information Added Successfully", "success");
+        navigate('/myTutorials')
+     }
     })
-    .then(res => res.json())
-    .then(data => {
-         console.log(data)
-         if(data.insertedId){
-            Swal.fire("Added", "Your Information Added Successfully", "success");
-            navigate('/myTutorials')
-         }
+    .catch(err=> {
+      toast.error('your token is either destroyed or you donot have it')
     })
+    
 
 };
 

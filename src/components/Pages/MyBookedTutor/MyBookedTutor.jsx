@@ -1,12 +1,17 @@
-import React from 'react';
-import { useLoaderData } from 'react-router-dom';
-import { FaStar, FaChalkboardTeacher, FaDollarSign } from 'react-icons/fa';
-import axios from 'axios';  // Import axios for making HTTP requests
-import { toast } from 'react-toastify';
+import React, { useState } from 'react';
+import {  FaChalkboardTeacher, FaDollarSign } from 'react-icons/fa';
+
 import Swal from 'sweetalert2';
+import axios from 'axios';
+import { useLoaderData } from 'react-router-dom';
 
 const MyBookedTutor = () => {
-    const tutors = useLoaderData();
+
+//  const tutors = useLoaderData()  
+    const [tutors,setTutors] = useState([])
+
+    axios.get(`http://localhost:5000/bookTutors`,{withCredentials:true})
+    .then(res => setTutors(res.data))
 
     const handleReview = async (tutorId) => {
         try {
