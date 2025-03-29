@@ -10,7 +10,7 @@ const steps = [
 
 const HowItWorks = () => {
   return (
-    <div className="w-full max-w-6xl mx-auto py-16 px-4 bg-gray-100 text-black">
+    <div className="w-full max-w-6xl mx-auto py-16 px-4 bg-gray-100 text-black mb-10">
       <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800">How It Works?</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
         {steps.map((step, index) => (

@@ -41,7 +41,7 @@ const MyTutorials = () => {
     
 
     return (
-        <div>
+        <div className='mb-10 mt-10'>
             <h1>Tutors Added : {tutors.length} </h1>
 
             <div className="overflow-x-auto">
@@ -62,7 +62,7 @@ const MyTutorials = () => {
                         {
                             tutors.map((tutor) => (
                                 
-                                <tr className=" text-white">
+                                <tr className=" ">
                                     <td className="px-6 py-4">
                                         <div className="flex items-center gap-4">
                                             <div className="">
@@ -73,23 +73,23 @@ const MyTutorials = () => {
                                                 
                                             </div>
                                             <div>
-                                                <div className="font-semibold text-white ">{tutor.name}</div>
-                                                <div className="text-sm text-white">{tutor.email}</div>
+                                                <div className="font-semibold ">{tutor.name}</div>
+                                                <div className="text-sm ">{tutor.email}</div>
                                             </div>
                                         </div>
                                     </td>
-                                    <td className="px-6 text-white py-4 ">${tutor.price}</td>
-                                    <td className="px-6 text-white py-4 ">{tutor.language}</td>
-                                    <td className="px-6 text-white py-4 ">{tutor.description}</td>
-                                    <td className="px-6 text-white py-4 ">{tutor.review}</td>
-                                    <td className="px-6 text-white py-4 flex gap-4">
+                                    <td className="px-6  py-4 ">${tutor.price}</td>
+                                    <td className="px-6  py-4 ">{tutor.language}</td>
+                                    <td className="px-6  py-4 ">{tutor.description}</td>
+                                    <td className="px-6  py-4 ">{tutor.review}</td>
+                                    <td className="px-6  py-4 flex gap-4">
                                         <Link to={`/update/${tutor._id}`}>
-                                            <button className="bg-gradient-to-r cursor-pointer from-teal-500 to-cyan-500 text-white px-4 py-2 rounded-md hover:from-cyan-500 hover:to-teal-500 transition duration-300">
+                                            <button className="bg-gradient-to-r cursor-pointer from-teal-500 to-cyan-500  px-4 py-2 rounded-md hover:from-cyan-500 hover:to-teal-500 transition duration-300">
                                                 Update
                                             </button>
                                         </Link>
 
-                                        <button onClick={() => handleDelete(tutor._id)} className="bg-gradient-to-r cursor-pointer from-red-500 to-orange-500 text-white px-4 py-2 rounded-md hover:from-orange-500 hover:to-red-500 transition duration-300">
+                                        <button onClick={() => handleDelete(tutor._id)} className="bg-gradient-to-r cursor-pointer from-red-500 to-orange-500  px-4 py-2 rounded-md hover:from-orange-500 hover:to-red-500 transition duration-300">
                                          
 
                                             Delete

@@ -5,11 +5,13 @@ import Footer from '../Shared/Footer';
 
 const Root = () => {
     return (
-        <div className='max-w-[1400px]  mx-auto'>
+       <div>
             <Navbar></Navbar>
+         <div className='max-w-[1400px]  mx-auto'>
             <Outlet></Outlet>
             <Footer></Footer>
         </div>
+       </div>
     );
 };
 
