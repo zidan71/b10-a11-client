@@ -49,7 +49,7 @@ const router = createBrowserRouter([
       {
         path:'/update/:id',
         element:<Update></Update>,
-        loader: ({params}) => fetch(`http://localhost:5000/tutors/${params.id}`)
+        loader: ({params}) => fetch(`https://assignment-11-server-pied-nu.vercel.app/tutors/${params.id}`)
 
       },
       {
@@ -58,7 +58,7 @@ const router = createBrowserRouter([
         loader: ({ request }) => {
           const url = new URL(request.url);
           const search = url.searchParams.get("search") || "";
-          return axios.get(`http://localhost:5000/tutors?search=${search}`,{withCredentials:true});
+          return axios.get(`https://assignment-11-server-pied-nu.vercel.app/tutors?search=${search}`,{withCredentials:true});
         }   
 
       },
@@ -66,7 +66,7 @@ const router = createBrowserRouter([
         path:'/findTutors/category/:category',
         element:<TutorsCategory></TutorsCategory>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/tutors/category/${params.category}`)
+          fetch(`https://assignment-11-server-pied-nu.vercel.app/tutors/category/${params.category}`)
         
       },
       {
@@ -82,7 +82,7 @@ const router = createBrowserRouter([
         element:<PrivateRoute>
           <TutorDetails></TutorDetails>
         </PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/tutors/${params.id}`)
+        loader: ({params}) => fetch(`https://assignment-11-server-pied-nu.vercel.app/tutors/${params.id}`)
        
 
       },

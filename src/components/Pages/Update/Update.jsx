@@ -10,7 +10,7 @@ const Update = () => {
     const update = useLoaderData()
 
     const {_id,review} = update;
-    console.log(_id)
+    (_id)
 
     const navigate = useNavigate()
 
@@ -29,9 +29,9 @@ const Update = () => {
 
 
 
-        console.log("Submitted Tutorial Data:", tutorialData);
+        ("Submitted Tutorial Data:", tutorialData);
 
-        fetch(`http://localhost:5000/tutors/${_id}`, {
+        fetch(`https://assignment-11-server-pied-nu.vercel.app/tutors/${_id}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'
@@ -40,9 +40,9 @@ const Update = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                (data)
                 if (data.modifiedCount) {
-                    console.log('successfully updated');
+                    ('successfully updated');
                     Swal.fire({
                         title: 'Success!',
                         text: 'Coffee updated successfully',

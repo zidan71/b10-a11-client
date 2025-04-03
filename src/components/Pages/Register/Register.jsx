@@ -21,10 +21,10 @@ const Register = () => {
 
         const registration = {name,email,photo,password}
 
-        console.log(registration)
+        (registration)
         register(email,password)
         .then(result => {
-            console.log(result.user)
+            (result.user)
             updateUser({displayName : name,photoURL:photo})
             .then(()=> {
                 navigate('/')
@@ -35,7 +35,7 @@ const Register = () => {
 
         })
         .catch(err => {
-            console.log('erro',err.message)
+            ('erro',err.message)
         })
 
 

@@ -13,7 +13,7 @@ const FindTutor = () => {
   }, []);
 
   const fetchTutors = (query = "") => {
-    axios.get(`http://localhost:5000/tutors?search=${query}`,{withCredentials:true})
+    axios.get(`https://assignment-11-server-pied-nu.vercel.app/tutors?search=${query}`,{withCredentials:true})
       .then((res) => setTutors(res.data))
       .catch((error) => console.error("Error fetching tutors:", error));
   };

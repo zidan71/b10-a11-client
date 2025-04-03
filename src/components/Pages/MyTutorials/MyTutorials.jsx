@@ -8,13 +8,13 @@ const MyTutorials = () => {
 
     const [tutors,setTutors] = useState([]);
 
-    axios.get('http://localhost:5000/tutors',{withCredentials:true})
+    axios.get('https://assignment-11-server-pied-nu.vercel.app/tutors',{withCredentials:true})
     .then(res => setTutors(res.data))
 
 
 
     const handleDelete = (id) =>  {
-        console.log(id)
+        (id)
 
         Swal.fire({
             title: "Are you sure?",
@@ -26,10 +26,10 @@ const MyTutorials = () => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/tutors/${id}`, { method: "DELETE" })
+                fetch(`https://assignment-11-server-pied-nu.vercel.app/tutors/${id}`, { method: "DELETE" })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data)
+                    (data)
                     Swal.fire("Deleted!", "Your equipment has been deleted.", "success");
                     setTutors(tutors.filter(e => e._id !== id));
 

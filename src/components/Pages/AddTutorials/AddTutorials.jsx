@@ -27,11 +27,11 @@ const AddTutorials = () => {
    const tutorialData = {name,image,email,language,price,description,review}
 
 
-    console.log("Submitted Tutorial Data:", tutorialData);
+    ("Submitted Tutorial Data:", tutorialData);
 
-    axios.post('http://localhost:5000/tutors',tutorialData,{withCredentials:true})
+    axios.post('https://assignment-11-server-pied-nu.vercel.app/tutors',tutorialData,{withCredentials:true})
     .then(res => {
-      console.log(res.data)
+      (res.data)
       if(res.data.insertedId){
         Swal.fire("Added", "Your Information Added Successfully", "success");
         navigate('/myTutorials')
@@ -48,7 +48,7 @@ const AddTutorials = () => {
     <div className="min-h-screen bg-base-200 flex items-center justify-center">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
         <h2 className="text-2xl font-bold text-center mb-6 text-black">Add a New Tutorial</h2>
-        <form onSubmit={handleSubmit} className="space-y-4 text-white">
+        <form onSubmit={handleSubmit} className="space-y-4 ">
           {/* Name */}
           <div>
             <label className="block font-medium text-black">Your Name</label>
@@ -57,7 +57,7 @@ const AddTutorials = () => {
               name="name"
               defaultValue={users?.displayName}
               placeholder="Enter your name"
-              className="input input-bordered w-full text-white placeholder-gray-500"
+              className="input input-bordered w-full  placeholder-gray-500"
               required
             />
           </div>
@@ -70,7 +70,7 @@ const AddTutorials = () => {
               name="email"
               defaultValue={users?.email}
               placeholder="Enter your email"
-              className="input input-bordered w-full text-white placeholder-gray-500"
+              className="input input-bordered w-full  placeholder-gray-500"
               required
             />
           </div>
@@ -82,7 +82,7 @@ const AddTutorials = () => {
               name="image"
               defaultValue={users?.photoURL}
               placeholder=" image url"
-              className="file-input  file-input-bordered w-full text-white"
+              className="file-input  file-input-bordered w-full "
               required
             />
           </div>
@@ -94,7 +94,7 @@ const AddTutorials = () => {
               type="text"
               name="language"
               placeholder="Enter tutorial language (e.g., English, Spanish)"
-              className="input input-bordered w-full text-white placeholder-gray-500"
+              className="input input-bordered w-full  placeholder-gray-500"
               required
             />
           </div>
@@ -106,7 +106,7 @@ const AddTutorials = () => {
               type="number"
               name="price"
               placeholder="Enter price in USD"
-              className="input input-bordered w-full text-white placeholder-gray-500"
+              className="input input-bordered w-full  placeholder-gray-500"
               required
             />
           </div>
@@ -117,7 +117,7 @@ const AddTutorials = () => {
             <textarea
               name="description"
               placeholder="Enter a brief description of the tutorial"
-              className="textarea textarea-bordered w-full text-white placeholder-gray-500"
+              className="textarea textarea-bordered w-full  placeholder-gray-500"
               required
             ></textarea>
           </div>
@@ -129,7 +129,7 @@ const AddTutorials = () => {
               type="number"
               name="review"
               placeholder="Enter the rating"
-              className="input input-bordered w-full text-white placeholder-gray-500"
+              className="input input-bordered w-full  placeholder-gray-500"
               required
               value={0}
             />

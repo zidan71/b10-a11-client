@@ -15,15 +15,15 @@ const Login = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
 
-        console.log(email,password)
+        (email,password)
         login(email,password)
         .then(result => {
-            console.log(result.user)
+            (result.user)
             toast.success('Login Successful')
             navigate(location?.state ? location.state : '/' )
         })
         .catch(err => {
-            console.log("ERRR",err.message)
+            ("ERRR",err.message)
             toast.error('Wrong Credentials')
         })
     }

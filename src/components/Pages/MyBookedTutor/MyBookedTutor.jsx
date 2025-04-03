@@ -10,13 +10,13 @@ const MyBookedTutor = () => {
 //  const tutors = useLoaderData()  
     const [tutors,setTutors] = useState([])
 
-    axios.get(`http://localhost:5000/bookTutors`,{withCredentials:true})
+    axios.get(`https://assignment-11-server-pied-nu.vercel.app/bookTutors`,{withCredentials:true})
     .then(res => setTutors(res.data))
 
     const handleReview = async (tutorId) => {
         try {
-            const response = await axios.put(`http://localhost:5000/tutors/review/${tutorId}`);
-            console.log('Review done', response.data);
+            const response = await axios.put(`https://assignment-11-server-pied-nu.vercel.app/tutors/review/${tutorId}`);
+            ('Review done', response.data);
             Swal.fire("Success", "Review Done", "success");
 
         } catch (error) {

@@ -31,16 +31,15 @@ const AuthProvider = ({children}) => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             const user = currentUser?.email
             setUsers(currentUser)
-            console.log(currentUser)
-            if(currentUser?.email){
+                        if(currentUser?.email){
                 const user1 = {email : currentUser?.email}
-                axios.post('http://localhost:5000/jwt',user1,{withCredentials:true})
-                .then(res => console.log(res.data))
+                axios.post('https://assignment-11-server-pied-nu.vercel.app/jwt',user1,{withCredentials:true})
+                .then(res => (res.data))
                 setLoading(false)
             }
             else{
-                axios.post('http://localhost:5000/logOut',{},{withCredentials:true})
-                .then(res=> console.log(res.data))
+                axios.post('https://assignment-11-server-pied-nu.vercel.app/logOut',{},{withCredentials:true})
+                .then(res=> (res.data))
                 setLoading(false)
             }
         })
