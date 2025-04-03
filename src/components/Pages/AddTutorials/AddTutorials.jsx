@@ -9,9 +9,9 @@ const AddTutorials = () => {
 
     const navigate = useNavigate()
     const {users} = useContext(AuthContext)
-  // Handle form submission
+
   const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent page reload
+    e.preventDefault(); 
     const form = e.target
    const name = form.name.value;
    const email = form. email.value;
@@ -27,7 +27,6 @@ const AddTutorials = () => {
    const tutorialData = {name,image,email,language,price,description,review}
 
 
-    ("Submitted Tutorial Data:", tutorialData);
 
     axios.post('https://assignment-11-server-pied-nu.vercel.app/tutors',tutorialData,{withCredentials:true})
     .then(res => {
