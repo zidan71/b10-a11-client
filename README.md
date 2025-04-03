@@ -1,12 +1,51 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+____________________________________________________TUTORHIVE__________________________________________________________
 
-Currently, two official plugins are available:
+Live Link : https://tutor-7393c.web.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+_____________________________________________________Key Features______________________________________________________
 
-## Expanding the ESLint configuration
+                    1. 📌 Book Tutors: Users can select and book tutors.
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+                    * ⭐ Leave Reviews: Users can leave reviews for tutors, increasing their review count.
+
+                    * 💰 View Tutor Pricing: Users can see the hourly rate of tutors.
+                    
+                    * 📸 Tutor Profiles: Tutors have images, languages, and prices displayed.
+                    
+                    *  📜 View Booked Tutors: Users can see all the tutors they have booked.
+  
+
+                    2. 🛠️ CRUD Operations on Tutors:
+
+                    *Create new tutor profiles.
+                    
+                    *Read all tutors or a specific tutor.
+                    
+                    *Update tutor details, including price and reviews.
+                    
+                    *Delete tutors from the database.         
+
+
+                    3. Backend & Database Features
+   
+                    *⚡ MongoDB Database: Stores tutor information and booked tutors.
+                    
+                    *🚀 Express.js API: Handles requests for tutor data and updates.
+                    
+                    *🔄 Review Count Update with $inc: Increments review count when a user leaves a review.
+
+______________________________________________________________NPM packages_________________________________________________
+
+    1.express: Web framework to create API routes.
+    2.cors:	   Allows cross-origin requests (important for frontend-backend communication).
+    3.dotenv:  Loads environment variables (e.g., MongoDB credentials).
+    4.mongodb: Connects to MongoDB and performs database operations.
+
+
+
+    The Purpose of this website is to help the user find their tutors online easily. They can see the information and they also can give review to them it will help the tutor to provide better performance in future.
+
+
+
+
